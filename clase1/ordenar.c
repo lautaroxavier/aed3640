@@ -14,10 +14,12 @@ nodo;
 int cmpNodoCad(const void *a, const void *b);
 int cmpNodoInt(const void *a, const void *b);
 void burbujeo(void *vec, int tam, int sz, int cmp(const void*,const void*));
+void mostrarVector(const void *vec, size_t sz, int items, void mostrar(const void*));
+void mostrarNodo(const void *n);
 
 int main()
 {
-    nodo vec[] =
+    nodo vec[TAM] =
     {
         {"HL", 4},
         {"SM", 2},
@@ -25,13 +27,31 @@ int main()
         {"JM", 1},
         {"IU", 6}
     };
+    printf("Vector desordenado\n");
+    mostrarVector(vec, sizeof(nodo), TAM, mostrarNodo);
     burbujeo(vec, TAM, sizeof(nodo), cmpNodoCad);
-    for (int i = 0; i < TAM; i++)
-    {
-        printf("%s %i\n", vec[i].cad, vec[i].n);
-    }
-    printf("Hello world!\n");
+    printf("Vector ordenado por nombre\n");
+    mostrarVector(vec, sizeof(nodo), TAM, mostrarNodo);
+    burbujeo(vec, TAM, sizeof(nodo), cmpNodoInt);
+    printf("Vector ordenado por posicion\n");
+    mostrarVector(vec, sizeof(nodo), TAM, mostrarNodo);
     return 0;
+}
+
+void mostrarNodo(const void *n)
+{
+    const nodo *pNodo = (const nodo*) n;
+    printf("nombre: %s pos: %i\n", pNodo->cad, pNodo->n);
+}
+
+void mostrarVector(const void *vec, size_t sz, int items, void mostrar(const void*))
+{
+    char *end = vec + (items * sz);
+    while (vec != end)
+    {
+        mostrar(vec);
+        vec += sz;
+    }
 }
 
 int cmpNodoCad(const void *a, const void *b)
