@@ -8,18 +8,33 @@ int sumarYApilarDigitos(pila *pPila, uint8_t *carry, uint8_t res);
 int main(int argc, char *argv[])
 {
     char buffer[TAM_MAX];
-    // verificar numero de argumentos
-    if (argc != 3)
+    char s1[TAM_MAX];
+    char s2[TAM_MAX];
+    if (argc != 2)
     {
-        printf("Uso correcto: ./sumar 123 456\n");
+        printf("Error: cantidad de argumentos incorrecta.\n");
         return 1;
     }
+    // abrir archivo
+    FILE *archivo = fopen(argv[1], "r+t");
+    if (!archivo)
+    {
+        printf("Error abriendo archivo.\n");
+        return 1;
+    }
+    fgets(s1, TAM_MAX, archivo);
+    fgets(s2, TAM_MAX, archivo);
+
+    s1[strcspn(s1, "\n")] = 0;
+    s2[strcspn(s2, "\n")] = 0;
     // mostrar sumandos
-    printf("%*s\n", 20, argv[1]);
+    printf("%*s\n", 20, s1);
     printf("+\n");
-    printf("%*s\n", 20, argv[2]);
-    sumarConPilas(argv[1], argv[2], buffer);
+    printf("%*s\n", 20, s2);
+    sumarConPilas(s1, s2, buffer);
     printf("%*s\n", 20, buffer);
+    fprintf(archivo, "%s\n", buffer);
+    fclose(archivo);
     return 0;
 }
 
