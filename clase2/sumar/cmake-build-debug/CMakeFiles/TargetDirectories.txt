@@ -1,3 +1,0 @@
-/home/lautarorx/repos/aed3640/clase2/sumar/cmake-build-debug/CMakeFiles/sumar.dir
-/home/lautarorx/repos/aed3640/clase2/sumar/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/lautarorx/repos/aed3640/clase2/sumar/cmake-build-debug/CMakeFiles/rebuild_cache.dir
