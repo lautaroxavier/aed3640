@@ -7,7 +7,7 @@ typedef struct
 {
     size_t tam_clave;
     tLista indice;
-    int cmp(const void*, const void*);
+    int (*cmp)(const void*, const void*);
 }
 T_Indice;
 
