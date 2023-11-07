@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1698641380 source:/home/lautarorx/repos/aed3640/clase6/lista-enlazada-prueba/main.c
+	<stdio.h>
+	<stdlib.h>
+
